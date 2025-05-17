@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS onboarding (
     email VARCHAR(255) NOT NULL,
     address TEXT NOT NULL,
     phone VARCHAR(20) NOT NULL,
-    is_emergency TINYINT(1) NOT NULL DEFAULT 0,
+    interest VARCHAR(50) NOT NULL,
     property_type VARCHAR(50) NOT NULL,
     time VARCHAR(20) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

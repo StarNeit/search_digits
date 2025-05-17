@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
     $phone = filter_var($_POST["phone"], FILTER_SANITIZE_STRING);
     $address = filter_var($_POST["address"], FILTER_SANITIZE_STRING);
-    $isEmergency = isset($_POST["isEmergency"]) ? ($_POST["isEmergency"] === "yes" ? 1 : 0) : 0;
+    $interest = isset($_POST["interest"]) ? filter_var($_POST["interest"], FILTER_SANITIZE_STRING) : "";
     $propertyType = isset($_POST["propertyType"]) ? filter_var($_POST["propertyType"], FILTER_SANITIZE_STRING) : "";
     $callbackTime = isset($_POST["callbackTime"]) ? filter_var($_POST["callbackTime"], FILTER_SANITIZE_STRING) : "";
 
@@ -53,11 +53,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $dbError = "Database connection failed: " . $conn->connect_error;
     } else {
       // Prepare and execute SQL statement
-      $stmt = $conn->prepare("INSERT INTO onboarding (email, address, phone, is_emergency, property_type, time) VALUES (?, ?, ?, ?, ?, ?)");
+      $stmt = $conn->prepare("INSERT INTO onboarding (email, address, phone, interest, property_type, time) VALUES (?, ?, ?, ?, ?, ?)");
 
       if ($stmt) {
         // Bind parameters
-        $stmt->bind_param("sssiss", $email, $address, $phone, $isEmergency, $propertyType, $callbackTime);
+        $stmt->bind_param("sssiss", $email, $address, $phone, $interest, $propertyType, $callbackTime);
 
         // Execute statement
         if ($stmt->execute()) {
@@ -901,26 +901,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
           <!-- Steps Container -->
           <div class="steps-container">
-            <!-- Step 1: Emergency Question -->
+            <!-- Step 1: Interest Question -->
             <div id="step-1" class="form-step active">
               <div class="mb-6">
                 <p class="text-blue-700 font-medium">Question 1 of 3</p>
-                <h3 class="text-2xl font-bold mt-2">Is this an emergency?</h3>
-                <p class="text-xl">Do you need same-day service?</p>
+                <h3 class="text-2xl font-bold mt-2">What are you interested in?</h3>
+                <p class="text-xl"></p>
               </div>
 
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <button type="button" class="option-card" data-value="yes" onclick="selectEmergency('yes')">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <button type="button" class="option-card" data-value="Battery" onclick="selectInterest('Battery')">
                   <div class="option-image" style="background-image: url('https://placehold.co/600x400/e2e8f0/e2e8f0')"></div>
                   <div class="option-label light">
-                    <p class="font-medium">Yes</p>
+                    <p class="font-medium">Battery Only</p>
                   </div>
                 </button>
 
-                <button type="button" class="option-card" data-value="no" onclick="selectEmergency('no')">
+                <button type="button" class="option-card" data-value="Solar" onclick="selectInterest('Solar')">
                   <div class="option-image" style="background-image: url('https://placehold.co/600x400/e2e8f0/e2e8f0')"></div>
                   <div class="option-label light">
-                    <p class="font-medium">No</p>
+                    <p class="font-medium">Solar Only</p>
+                  </div>
+                </button>
+
+                <button type="button" class="option-card" data-value="Solar & Battery" onclick="selectInterest('Solar & Battery')">
+                  <div class="option-image" style="background-image: url('https://placehold.co/600x400/e2e8f0/e2e8f0')"></div>
+                  <div class="option-label light">
+                    <p class="font-medium">Solar & Battery</p>
                   </div>
                 </button>
               </div>
@@ -1046,7 +1053,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
               <form id="contact-form" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="space-y-4">
                 <!-- Hidden fields to store previous selections -->
-                <input type="hidden" id="isEmergency" name="isEmergency" value="">
+                <input type="hidden" id="interest" name="interest" value="">
                 <input type="hidden" id="propertyType" name="propertyType" value="">
                 <input type="hidden" id="callbackTime" name="callbackTime" value="">
 
@@ -1075,12 +1082,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="space-y-1">
                   <div class="flex border rounded-md overflow-hidden <?php echo isset($formErrors['phone']) ? 'border-red-500' : ''; ?>">
                     <div class="bg-gray-100 p-3 flex items-center justify-center min-w-16">
-                      <span class="text-gray-700">GB</span>
+                      <span class="text-gray-700">USA</span>
                     </div>
                     <input
                       type="tel"
                       name="phone"
-                      placeholder="+44 0000 000000"
+                      placeholder="+1 209 285 2814"
                       required
                       class="flex-1 p-3 outline-none"
                       value="<?php echo isset($_POST['phone']) ? htmlspecialchars($_POST['phone']) : ''; ?>"
@@ -1217,7 +1224,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Form state
   let currentStep = 1;
   let formData = {
-    isEmergency: null,
+    interest: null,
     propertyType: null,
     callbackTime: null
   };
@@ -1234,7 +1241,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   ];
 
   // Hidden form fields
-  const isEmergencyField = document.getElementById('isEmergency');
+  const interestField = document.getElementById('interest');
   const propertyTypeField = document.getElementById('propertyType');
   const callbackTimeField = document.getElementById('callbackTime');
 
@@ -1290,13 +1297,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Reset form
   function resetForm() {
     formData = {
-      isEmergency: null,
+      interest: null,
       propertyType: null,
       callbackTime: null
     };
 
     // Reset hidden fields
-    if (isEmergencyField) isEmergencyField.value = '';
+    if (interestField) interestField.value = '';
     if (propertyTypeField) propertyTypeField.value = '';
     if (callbackTimeField) callbackTimeField.value = '';
 
@@ -1330,13 +1337,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (featuresSection) featuresSection.style.display = 'grid';
   }
 
-  // Select emergency option
-  function selectEmergency(value) {
-    formData.isEmergency = value;
+  // Select interest option
+  function selectInterest(value) {
+    formData.interest = value;
 
     // Update hidden field
-    if (isEmergencyField) {
-      isEmergencyField.value = value;
+    if (interestField) {
+      interestField.value = value;
     }
 
     // Update UI
