@@ -982,7 +982,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h3 class="text-2xl font-bold mt-2">When would you prefer a callback?</h3>
               </div>
 
-              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 <button type="button" class="option-card" data-value="morning" onclick="selectCallbackTime('morning')">
                   <div class="icon-container">
                     <svg class="icon-lg text-gray-700" viewBox="0 0 24 24">
@@ -1017,24 +1017,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   </div>
                   <div class="option-label light">
                     <p class="font-medium">In the afternoon</p>
-                  </div>
-                </button>
-
-                <button type="button" class="option-card" data-value="evening" onclick="selectCallbackTime('evening')">
-                  <div class="icon-container">
-                    <svg class="icon-lg text-gray-700" viewBox="0 0 24 24">
-                      <path d="M17 18a5 5 0 0 0-10 0"></path>
-                      <line x1="12" y1="9" x2="12" y2="2"></line>
-                      <line x1="4.22" y1="10.22" x2="5.64" y2="11.64"></line>
-                      <line x1="1" y1="18" x2="3" y2="18"></line>
-                      <line x1="21" y1="18" x2="23" y2="18"></line>
-                      <line x1="18.36" y1="11.64" x2="19.78" y2="10.22"></line>
-                      <line x1="23" y1="22" x2="1" y2="22"></line>
-                      <polyline points="16 6 12 10 8 6"></polyline>
-                    </svg>
-                  </div>
-                  <div class="option-label light">
-                    <p class="font-medium">In evening</p>
                   </div>
                 </button>
 
