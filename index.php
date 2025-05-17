@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pest Control Services</title>
+  <title>Solar Services</title>
   <style>
     /* Reset and base styles */
     * {
@@ -832,8 +832,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </header>
 
   <div class="landing-hero">
-    <h1>Professional Pest Control Services</h1>
-    <p>We provide expert pest control solutions for residential and commercial properties. Our team of professionals is ready to help you eliminate any pest problem.</p>
+    <h1>Professional Solar Services</h1>
+    <p>We provide expert Solar solutions for residential and commercial properties. Our team of professionals is ready to help you eliminate any Solar problem.</p>
     <button id="hero-contact-btn" class="btn-primary">Get a Free Quote</button>
   </div>
 </div>
@@ -861,7 +861,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </div>
           <h3 class="text-2xl font-semibold mb-2">Thank You!</h3>
           <p class="text-gray-600 mb-6">
-            Your request has been submitted. One of our pest control experts will contact you
+            Your request has been submitted. One of our Solar experts will contact you
             <?php
             if ($callbackTime == "morning") {
               echo "in the morning";
@@ -1052,7 +1052,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div id="step-4" class="form-step">
               <div class="text-center mb-6">
                 <h2 class="text-2xl font-bold">
-                  Our <span class="text-red-600">Pest Control</span> experts are ready to help you!
+                  Our <span class="text-red-600">Solar</span> experts are ready to help you!
                 </h2>
                 <p class="text-gray-600 mt-2">Simply enter your details, and we'll contact you back to confirm.</p>
               </div>
