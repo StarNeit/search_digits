@@ -889,9 +889,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <!-- Step 1: Header (shown in steps 1-3) -->
           <div id="form-header" class="text-center mb-8">
             <h1 class="text-3xl md:text-4xl font-bold mb-2">
-              Get a free <span class="text-red-600">Pest Control Quote</span>
+              Get a free <span class="text-red-600">Solar Consultation</span>
             </h1>
-            <h2 class="text-xl md:text-2xl font-medium text-gray-800">from your Local Trusted Experts</h2>
+            <h2 class="text-xl md:text-2xl font-medium text-gray-800">From America's Leading Provider</h2>
           </div>
 
           <!-- Progress Bar -->
@@ -933,7 +933,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h3 class="text-2xl font-bold mt-2">What type of property is this for?</h3>
               </div>
 
-              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 <button type="button" class="option-card" data-value="residential" onclick="selectPropertyType('residential')">
                   <div class="icon-container">
                     <svg class="icon-lg text-gray-700" viewBox="0 0 24 24">
@@ -942,7 +942,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </svg>
                   </div>
                   <div class="option-label light">
-                    <p class="font-medium">Residential House</p>
+                    <p class="font-medium">Residential</p>
                   </div>
                 </button>
 
@@ -954,27 +954,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </svg>
                   </div>
                   <div class="option-label light">
-                    <p class="font-medium">Commercial Shop</p>
-                  </div>
-                </button>
-
-                <button type="button" class="option-card" data-value="office" onclick="selectPropertyType('office')">
-                  <div class="icon-container">
-                    <svg class="icon-lg text-gray-700" viewBox="0 0 24 24">
-                      <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
-                      <rect x="9" y="9" width="6" height="6"></rect>
-                      <line x1="9" y1="1" x2="9" y2="4"></line>
-                      <line x1="15" y1="1" x2="15" y2="4"></line>
-                      <line x1="9" y1="20" x2="9" y2="23"></line>
-                      <line x1="15" y1="20" x2="15" y2="23"></line>
-                      <line x1="20" y1="9" x2="23" y2="9"></line>
-                      <line x1="20" y1="14" x2="23" y2="14"></line>
-                      <line x1="1" y1="9" x2="4" y2="9"></line>
-                      <line x1="1" y1="14" x2="4" y2="14"></line>
-                    </svg>
-                  </div>
-                  <div class="option-label light">
-                    <p class="font-medium">Office Building</p>
+                    <p class="font-medium">Commercial</p>
                   </div>
                 </button>
 
@@ -989,7 +969,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </svg>
                   </div>
                   <div class="option-label light">
-                    <p class="font-medium">Industrial Warehouse</p>
+                    <p class="font-medium">Industrial</p>
                   </div>
                 </button>
               </div>
