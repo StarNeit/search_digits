@@ -827,7 +827,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- Landing Page -->
 <div class="landing-container">
   <header class="landing-header">
-    <div class="logo">Pest<span>Control</span> Services</div>
+    <div class="logo"><span>Solar</span> Services</div>
     <button id="contact-us-btn" class="btn-primary">Contact Us</button>
   </header>
 
