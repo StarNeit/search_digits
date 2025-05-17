@@ -1,9 +1,9 @@
 <?php
 // Database configuration
-$db_host = "localhost";     // Your database host
-$db_user = "root";          // Your database username
-$db_pass = "password";              // Your database password
-$db_name = "Onboarding";    // Your database name
+$db_host = 'localhost';
+$db_user = 'root';
+$db_pass = '';  // Empty password for default XAMPP MySQL
+$db_name = 'Onboarding';
 
 // Form processing
 $formSubmitted = false;
@@ -911,21 +911,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <button type="button" class="option-card" data-value="Battery" onclick="selectInterest('Battery')">
-                  <div class="option-image" style="background-image: url('https://placehold.co/600x400/e2e8f0/e2e8f0')"></div>
+                  <div class="icon-container">
+                    <img src="battery.svg" alt="Battery Icon" class="w-16 h-16 text-gray-700">
+                  </div>
                   <div class="option-label light">
                     <p class="font-medium">Battery Only</p>
                   </div>
                 </button>
 
                 <button type="button" class="option-card" data-value="Solar" onclick="selectInterest('Solar')">
-                  <div class="option-image" style="background-image: url('https://placehold.co/600x400/e2e8f0/e2e8f0')"></div>
+                  <div class="icon-container">
+                    <img src="solar.svg" alt="Solar Icon" class="w-16 h-16 text-gray-700">
+                  </div>
                   <div class="option-label light">
                     <p class="font-medium">Solar Only</p>
                   </div>
                 </button>
 
                 <button type="button" class="option-card" data-value="Solar & Battery" onclick="selectInterest('Solar & Battery')">
-                  <div class="option-image" style="background-image: url('https://placehold.co/600x400/e2e8f0/e2e8f0')"></div>
+                  <div class="icon-container">
+                    <img src="solar-battery.svg" alt="Solar and Battery Icon" class="w-16 h-16 text-gray-700">
+                  </div>
                   <div class="option-label light">
                     <p class="font-medium">Solar & Battery</p>
                   </div>
